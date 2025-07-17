@@ -2,7 +2,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 const USER = process.env.BASIC_AUTH_USER || 'admin'
-const PASS = process.env.BASIC_AUTH_PASS || 'password123'
+const PASS = process.env.BASIC_AUTH_PASS || 'oxystudio'
 
 // Funzione per generare il valore dell'header Authorization corretto
 function getExpectedAuthHeader(user: string, pass: string): string {
