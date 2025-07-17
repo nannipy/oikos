@@ -5,15 +5,10 @@ import { ArrowDown } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Footer from "@/components/ui/Footer";
+import Navbar from "@/components/ui/Navbar";
+
 
 export default function Desktop() {
-  // Dati degli elementi del menu di navigazione
-  const navItems = [
-    { text: "CHI SIAMO", hasSlash: true },
-    { text: "MENU", hasSlash: true },
-    { text: "CONTATTI", hasSlash: false },
-  ];
-
   // Recensioni dinamiche
   const reviews = [
     {
@@ -41,47 +36,7 @@ export default function Desktop() {
     <div className="bg-white flex flex-col items-center w-full min-h-screen">
       <div className="w-full relative">
         {/* Header */}
-        <header className="flex items-center justify-between px-4 md:px-8 py-4 md:py-6 w-full bg-white">
-          <div className="flex items-center gap-3 md:gap-5">
-            <Image
-              src="/logo.svg"
-              alt="Logo Oikos"
-              width={44}
-              height={56}
-              className="block"
-              priority
-            />
-            <div className="font-montserrat text-black text-2xl md:text-4xl tracking-[0.13em] flex items-center">
-              ÓIKOS
-            </div>
-          </div>
-
-          <nav className="hidden md:flex items-center gap-4">
-            {navItems.map((item, index) => (
-              <React.Fragment key={index}>
-                <Button variant="link" className="p-0 h-auto">
-                  <span className="font-b612 text-black text-xs tracking-[0] leading-[16.1px] uppercase">
-                    {item.text}
-                  </span>
-                </Button>
-                {item.hasSlash && (
-                  <span className="font-b612 text-black text-xs text-center tracking-[0] leading-[16.1px] uppercase">
-                    /
-                  </span>
-                )}
-              </React.Fragment>
-            ))}
-            <Button className="bg-black rounded-none ml-4 h-auto">
-              <span className="font-b612 text-white text-xs tracking-[0] leading-[16.1px] uppercase">
-                PRENOTA ORA
-              </span>
-            </Button>
-          </nav>
-          {/* Mobile hamburger placeholder */}
-          <div className="md:hidden">
-            <Image src="/hamburger.svg" alt="Hamburger" width={24} height={24} />
-          </div>
-        </header>
+        <Navbar />
 
         {/* Hero Section */}
         <section
@@ -92,7 +47,7 @@ export default function Desktop() {
           }}
         >
           <div className="absolute left-1/2 top-[20%] md:top-[224px] -translate-x-1/2 w-[90vw] max-w-[1085px] px-2 md:px-0">
-            <h1 className="font-montserrat text-white text-3xl md:text-[64px] leading-tight md:leading-[78px] text-center tracking-[0.13em]">
+            <h1 className="font-montserrat text-white text-3xl md:text-[64px] leading-tight md:leading-[78px] text-center tracking-[0.10em]">
               BENVENUTI NELLA NOSTRA<br />TRATTORIA MODERNA
             </h1>
           </div>
@@ -112,7 +67,7 @@ export default function Desktop() {
         </section>
 
         {/* Our Story & Mission Section - nuova griglia 2x2 */}
-        <section className="py-12 md:py-24 px-4 md:px-16 w-full">
+        <section id="chi-siamo" className="py-12 md:py-24 px-4 md:px-16 w-full">
           <div className="mx-auto w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
             {/* Storia: testo a sinistra */}
             <div className="order-1 md:order-1 flex flex-col justify-center">
@@ -163,7 +118,7 @@ export default function Desktop() {
         </section>
 
         {/* Menu Section */}
-        <section className="flex flex-col md:flex-row justify-center">
+        <section id="menu" className="flex flex-col md:flex-row justify-center">
           <div className="w-full md:w-full bg-black py-8 md:py-16 px-4 md:px-20 flex flex-col justify-between">
             <div className="font-montserrat text-white text-lg md:text-2xl tracking-[0.13em] md:tracking-[3.12px] leading-normal max-w-full md:max-w-[601px]">
               CHE TU ABBIA VOGLIA DI UN CLASSICO INTRAMONTABILE O DI UNA SORPRESA INASPETTATA, IL NOSTRO MENU È PENSATO PER EMOZIONARE IL PALATO E RISVEGLIARE I SENSI.<br /><br />
@@ -174,13 +129,13 @@ export default function Desktop() {
                 variant="outline"
                 className="border-white rounded-none h-auto"
               >
-                <span className="font-b612 text-white text-xs">PRENOTA UN TAVOLO</span>
+                <span className="font-b612 text-xs">PRENOTA UN TAVOLO</span>
               </Button>
               <Button
-                variant="default"
-                className="bg-white text-black rounded-none h-auto"
+                variant="secondary"
+                className="rounded-none h-auto"
               >
-                <span className="font-b612 text-black text-xs">SCOPRI IL MENÙ</span>
+                <span className="font-b612 text-xs">SCOPRI IL MENÙ</span>
               </Button>
             </div>
           </div>
@@ -241,7 +196,7 @@ export default function Desktop() {
         </section>
       </div>
       {/* Sezione DOVE SIAMO? */}
-      <section className="relative w-full flex justify-center items-stretch bg-[rgba(236,236,236,0.49)] overflow-hidden" style={{ minHeight: 808 }}>
+      <section id="contatti" className="relative w-full flex justify-center items-stretch bg-[rgba(236,236,236,0.49)] overflow-hidden" style={{ minHeight: 808 }}>
         {/* Immagine a sinistra */}
         <div className="w-full md:w-1/2 relative h-[300px] md:h-[808px]">
           <Image
@@ -260,12 +215,16 @@ export default function Desktop() {
               <span className="font-b612Mono text-[12px] leading-[26px] block mb-2">VIA FLAMINIA NUOVA 230/232,<br />00191 ROMA, ITALIA</span>
             </div>
             <div className="flex flex-col gap-4 mb-10 ">
-              <a href="#prenota" className="flex items-center justify-center px-6 py-2 bg-black text-white font-b612Mono text-xs rounded-none w-full" style={{ minWidth: 133, minHeight: 35 }}>
-                PRENOTA UN TAVOLO
-              </a>
-              <a href="https://maps.google.com/?q=Via+Flaminia+Nuova+230/232,+00191+ROMA,+ITALIA" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center px-6 py-2 border border-black text-black font-b612Mono text-xs rounded-none w-full" style={{ minWidth: 125, minHeight: 35 }}>
-                VEDI SULLA MAPPA
-              </a>
+              <Button asChild className="px-6 py-2 bg-black text-white font-b612Mono text-xs rounded-none w-full" style={{ minWidth: 133, minHeight: 35 }}>
+                <a href="#prenota">
+                  PRENOTA UN TAVOLO
+                </a>
+              </Button>
+              <Button asChild variant="secondary" className="px-6 py-2 border border-black text-black font-b612Mono text-xs rounded-none w-full" style={{ minWidth: 125, minHeight: 35 }}>
+                <a href="https://maps.google.com/?q=Via+Flaminia+Nuova+230/232,+00191+ROMA,+ITALIA" target="_blank" rel="noopener noreferrer">
+                  VEDI SULLA MAPPA
+                </a>
+              </Button>
             </div>
             <h3 className="font-montserrat text-black text-2xl md:text-[32px] leading-[38px] text-center uppercase mb-4 mt-2">ORARI</h3>
             <div className="font-b612Mono  text-black text-xs md:text-base uppercase text-center mb-8">
