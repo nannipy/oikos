@@ -1,36 +1,170 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+![Logo Oikos](public/logo-oikos.png)
 
-## Getting Started
+# Oikos - Trattoria Moderna
 
-First, run the development server:
+Benvenuto nel repository del sito web di **Oikos - Trattoria Moderna**.  
+Questo progetto è sviluppato con [Next.js](https://nextjs.org/) e utilizza le più moderne tecnologie frontend per offrire un'esperienza utente elegante, veloce e responsive.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Indice
+
+- [Caratteristiche principali](#caratteristiche-principali)
+- [Struttura del progetto](#struttura-del-progetto)
+- [Tecnologie utilizzate](#tecnologie-utilizzate)
+- [Installazione e avvio](#installazione-e-avvio)
+- [Autenticazione](#autenticazione)
+- [Componenti e sezioni](#componenti-e-sezioni)
+- [Prenotazione tavolo](#prenotazione-tavolo)
+- [Personalizzazione e utility](#personalizzazione-e-utility)
+- [Deploy](#deploy)
+- [Contatti](#contatti)
+
+---
+
+## Caratteristiche principali
+
+- **Homepage** con sezioni dinamiche: Hero, Storia & Missione, Menu, Recensioni, Dove Siamo.
+- **Prenotazione tavolo** tramite pagina dedicata e modale.
+- **Design responsive** e moderno, ottimizzato per dispositivi mobili e desktop.
+- **Autenticazione Basic** opzionale per proteggere l'accesso.
+- **Animazioni** e carosello recensioni.
+- **Integrazione con Google Maps** e social.
+
+---
+
+## Struttura del progetto
+
+```
+/app
+  - layout.tsx         // Layout principale, font, Analytics
+  - page.tsx           // Homepage
+  - prenota/page.tsx   // Pagina prenotazione tavolo
+
+/components
+  - PrenotaModal.tsx   // Modale per prenotazione
+  /sections
+    - HeroSection.tsx
+    - StoryMissionSection.tsx
+    - MenuSection.tsx
+    - ReviewsSection.tsx
+    - LocationSection.tsx
+  /ui
+    - button.tsx, card.tsx, Footer.tsx, Navbar.tsx
+
+/api
+  - basic-auth.ts      // API di autenticazione base
+
+/lib
+  - utils.ts           // Utility CSS (merge classi Tailwind)
+
+middleware.ts          // Middleware per autenticazione Basic
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tecnologie utilizzate
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Next.js 15** (App Router)
+- **React 19**
+- **Tailwind CSS 4**
+- **TypeScript**
+- **@radix-ui/react-slot, lucide-react, react-icons** (UI)
+- **@vercel/analytics** (statistiche)
+- **Class-variance-authority, clsx, tailwind-merge** (gestione classi CSS)
+- **Custom middleware** per autenticazione Basic
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Installazione e avvio
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Clona il repository:**
+   ```bash
+   git clone <repo-url>
+   cd oikos-website
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Installa le dipendenze:**
+   ```bash
+   npm install
+   # oppure
+   yarn install
+   ```
 
-## Deploy on Vercel
+3. **Avvia il server di sviluppo:**
+   ```bash
+   npm run dev
+   # oppure
+   yarn dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. **Visita:**  
+   [http://localhost:3000](http://localhost:3000)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Autenticazione
+
+Il sito può essere protetto da autenticazione Basic tramite il middleware (`middleware.ts`).  
+Le credenziali di default sono:
+- **Utente:** `admin`
+- **Password:** `oxystudio`
+
+Puoi sovrascrivere questi valori tramite le variabili d'ambiente `BASIC_AUTH_USER` e `BASIC_AUTH_PASS`.
+
+---
+
+## Componenti e sezioni
+
+### Homepage (`/`)
+
+- **HeroSection:** Immagine di copertina, benvenuto e claim.
+- **StoryMissionSection:** Storia e missione del ristorante, con immagini.
+- **MenuSection:** Descrizione del menu, pulsanti per prenotare e scoprire il menù.
+- **ReviewsSection:** Carosello di recensioni animate da clienti reali.
+- **LocationSection:** Indirizzo, orari, bottoni per prenotare e vedere la mappa, link social.
+
+### Navbar e Footer
+
+Componenti riutilizzabili per la navigazione e il footer, con branding e link utili.
+
+---
+
+## Prenotazione tavolo
+
+- **Modale di prenotazione:**  
+  Accessibile dalla homepage tramite pulsante, permette di inserire nome, email, telefono, data, orario e numero di persone.  
+  Invio dati tramite chiamata POST a `/api/prenota`.
+
+- **Pagina dedicata (`/prenota`):**  
+  Stessa logica della modale, ma in pagina separata.
+
+- **Gestione stato:**  
+  Feedback di successo o errore, validazione campi, loading durante l'invio.
+
+---
+
+## Personalizzazione e utility
+
+- **Font:**  
+  Geist e Geist Mono da Google Fonts, per un look moderno e leggibile.
+- **Utility CSS:**  
+  Funzione `cn` in `lib/utils.ts` per unire classi Tailwind in modo sicuro.
+- **Immagini:**  
+  Tutte le immagini sono in `/public` e ottimizzate per Next.js.
+
+---
+
+## Deploy
+
+Il deploy consigliato è su [Vercel](https://vercel.com/), ma puoi utilizzare qualsiasi piattaforma compatibile con Next.js.
+
+---
+
+## Contatti
+
+- **Indirizzo:** Via Flaminia Nuova 230/232, 00191 Roma, Italia
+- **Instagram:** [instagram.com](https://instagram.com)
+- **Tripadvisor:** [tripadvisor.it](https://tripadvisor.it)
+
+---
+
+Se hai bisogno di ulteriori dettagli tecnici o vuoi personalizzare il progetto, consulta i file sorgente o contattaci!
