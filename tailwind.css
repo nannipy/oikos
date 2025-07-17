@@ -1,10 +1,8 @@
-
 @import "tw-animate-css";
+@import "tailwindcss/preflight";
 
 @custom-variant dark (&:is(.dark *));
 
-@tailwind base;
-@tailwind components;
 @tailwind utilities;
 
 @layer components {
@@ -205,5 +203,11 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .font-b612Mono {
+    font-family: 'B612 Mono', monospace !important;
   }
 }

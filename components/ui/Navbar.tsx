@@ -32,7 +32,7 @@ const Navbar: React.FC<NavbarProps> = ({ navItems = defaultNavItems }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 flex items-center justify-between px-4 md:px-8 py-4 md:py-6 w-full bg-white relative">
+    <header className="sticky top-0 z-50 flex items-center justify-between px-4 md:px-8 py-4 md:py-6 w-full bg-white ">
       <div className="flex items-center gap-3 md:gap-5">
         <Image
           src="/logo.svg"

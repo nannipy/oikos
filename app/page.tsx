@@ -74,7 +74,7 @@ export default function Desktop() {
               <h2 className="font-montserrat text-black text-2xl md:text-[32px] tracking-[0.13em] mb-4 md:mb-8 uppercase">
                 LA NOSTRA STORIA
               </h2>
-              <p className="font-b612Mono text-black text-xs md:text-base leading-6 max-w-full md:max-w-[420px] whitespace-pre-line">
+              <p style={{ fontFamily: "'B612 Mono', monospace"}} className="text-black text-xs md:text-base leading-6 max-w-full md:max-w-[420px] whitespace-pre-line">
                 Oykos nasce dalla passione autentica per la cucina italiana e dall&apos;amore per le sue radici.
                 È il risultato di un percorso che intreccia ricette della tradizione italiana con la voglia di innovare e sorprendere.
                 Abbiamo iniziato con un sogno semplice: portare in tavola sapori familiari rivisitati con creatività, creando un ponte tra tradizione e contemporaneità.
@@ -108,7 +108,7 @@ export default function Desktop() {
               <h2 className="font-montserrat text-black text-2xl md:text-[32px] tracking-[0.13em] mb-4 md:mb-8 uppercase">
                 LA NOSTRA MISSIONE
               </h2>
-              <p className="font-b612Mono text-black text-xs md:text-base leading-6 max-w-full md:max-w-[420px] whitespace-pre-line">
+              <p style={{ fontFamily: "'B612 Mono', monospace"}} className=" text-black text-xs md:text-base leading-6 max-w-full md:max-w-[420px] whitespace-pre-line">
                 La nostra missione è offrire un&apos;esperienza culinaria che vada oltre il semplice mangiare.
                 Vogliamo che ogni piatto racconti una storia, evochi un ricordo, trasmetta emozione.
                 In un mondo che corre veloce, Oykos si propone come un luogo dove fermarsi e assaporare il gusto autentico della cucina italiana, con un tocco moderno che ne esalta l&apos;anima.
