@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
-export default function MenuSection() {
+export default function MenuSection({ onPrenotaClick }: { onPrenotaClick?: () => void }) {
   return (
     <section id="menu" className="flex flex-col md:flex-row justify-center">
       <div className="w-full md:w-1/2 bg-black py-8 md:py-16 px-4 md:px-20 flex flex-col justify-between">
@@ -13,8 +13,16 @@ export default function MenuSection() {
           <Button
             variant="outline"
             className="border-white rounded-none h-auto"
+            onClick={onPrenotaClick}
+            asChild={typeof onPrenotaClick !== "function"}
           >
-            <span className="font-b612 text-xs">PRENOTA UN TAVOLO</span>
+            {typeof onPrenotaClick === "function" ? (
+              <span className="font-b612 text-xs">PRENOTA UN TAVOLO</span>
+            ) : (
+              <a href="prenota">
+                <span className="font-b612 text-xs">PRENOTA UN TAVOLO</span>
+              </a>
+            )}
           </Button>
           <Button
             variant="secondary"

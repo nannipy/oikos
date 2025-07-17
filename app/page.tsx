@@ -11,6 +11,7 @@ import StoryMissionSection from "@/components/sections/StoryMissionSection";
 import MenuSection from "@/components/sections/MenuSection";
 import ReviewsSection from "@/components/sections/ReviewsSection";
 import LocationSection from "@/components/sections/LocationSection";
+import PrenotaModal from "@/components/PrenotaModal";
 
 
 export default function Desktop() {
@@ -37,17 +38,24 @@ export default function Desktop() {
     return () => clearInterval(interval);
   }, [reviews.length]);
 
+  const [openPrenotaModal, setOpenPrenotaModal] = useState(false);
+
+  // Funzione per passare come prop ai pulsanti
+  const handleOpenPrenota = () => setOpenPrenotaModal(true);
+  const handleClosePrenota = () => setOpenPrenotaModal(false);
+
   return (
     <div className="bg-white flex flex-col items-center w-full min-h-screen">
+      <PrenotaModal open={openPrenotaModal} onClose={handleClosePrenota} />
       <div className="w-full relative">
         {/* Header */}
-        <Navbar />
+        <Navbar onPrenotaClick={handleOpenPrenota} />
         {/* Hero Section */}
         <HeroSection />
         {/* Our Story & Mission Section */}
         <StoryMissionSection />
         {/* Menu Section */}
-        <MenuSection />
+        <MenuSection onPrenotaClick={handleOpenPrenota} />
         {/* Recensioni Section dinamica e animata */}
         <ReviewsSection />
       </div>

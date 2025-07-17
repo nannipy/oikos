@@ -4,6 +4,7 @@ import React, { useState } from "react";
 
 interface NavbarProps {
   navItems?: { text: string; hasSlash: boolean }[];
+  onPrenotaClick?: () => void;
 }
 
 const defaultNavItems = [
@@ -28,7 +29,7 @@ const handleNavClick = (text: string) => {
   }
 };
 
-const Navbar: React.FC<NavbarProps> = ({ navItems = defaultNavItems }) => {
+const Navbar: React.FC<NavbarProps> = ({ navItems = defaultNavItems, onPrenotaClick }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -61,10 +62,22 @@ const Navbar: React.FC<NavbarProps> = ({ navItems = defaultNavItems }) => {
             )}
           </React.Fragment>
         ))}
-        <Button className="bg-black rounded-none ml-4 h-auto">
-          <span className="font-b612 text-xs tracking-[0] leading-[16.1px] uppercase">
-            PRENOTA ORA
-          </span>
+        <Button
+          className="bg-black rounded-none ml-4 h-auto"
+          onClick={onPrenotaClick}
+          asChild={typeof onPrenotaClick !== "function"}
+        >
+          {typeof onPrenotaClick === "function" ? (
+            <span className="font-b612 text-xs tracking-[0] leading-[16.1px] uppercase">
+              PRENOTA ORA
+            </span>
+          ) : (
+            <a href="prenota">
+              <span className="font-b612 text-xs tracking-[0] leading-[16.1px] uppercase" >
+                PRENOTA ORA
+              </span>
+            </a>
+          )}
         </Button>
       </nav>
       {/* Mobile hamburger  */}
@@ -95,10 +108,27 @@ const Navbar: React.FC<NavbarProps> = ({ navItems = defaultNavItems }) => {
                 </span>
               </Button>
             ))}
-            <Button className="rounded-none mt-6 w-3/4" onClick={() => setMobileMenuOpen(false)}>
-              <span className="font-b612 text-xs">
-                PRENOTA ORA
-              </span>
+            <Button
+              className="rounded-none mt-6 w-3/4"
+              onClick={() => {
+                if (onPrenotaClick) {
+                  onPrenotaClick();
+                  setMobileMenuOpen(false);
+                }
+              }}
+              asChild={!onPrenotaClick}
+            >
+              {onPrenotaClick ? (
+                <span className="font-b612 text-xs">
+                  PRENOTA ORA
+                </span>
+              ) : (
+                <a href="#prenota">
+                  <span className="font-b612 text-xs">
+                    PRENOTA ORA
+                  </span>
+                </a>
+              )}
             </Button>
           </nav>
         </div>
