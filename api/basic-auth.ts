@@ -1,20 +1,13 @@
-// pages/api/basic-auth.ts
+// pages/api/auth.ts (Next.js pages router)
 import { NextApiRequest, NextApiResponse } from 'next'
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  const auth = req.headers.authorization || ''
+  const auth = req.headers.authorization
 
-  const expectedUser = process.env.BASIC_AUTH_USER || 'admin'
-  const expectedPass = process.env.BASIC_AUTH_PASS || 'password123'
-
-  const expectedAuth = 'Basic ' + Buffer.from(`${expectedUser}:${expectedPass}`).toString('base64')
-
-  if (auth === expectedAuth) {
-    // Pass through
-    res.status(200).end()
+  const expected = 'Basic ' + Buffer.from('user:password123').toString('base64')
+  if (auth === expected) {
+    res.status(200).end('Access granted')
   } else {
-    // Reject access
-    res.setHeader('WWW-Authenticate', 'Basic realm="Secure Area"')
-    res.status(401).end('Access denied')
+    res.status(401).setHeader('WWW-Authenticate', 'Basic').end('Access denied')
   }
 }
