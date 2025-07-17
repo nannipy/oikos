@@ -1,8 +1,10 @@
-![Logo Oikos](public/logo-oikos.png)
+<p align="center">
+  <img src="public/logo-oikos.png" alt="Oikos Logo" width="200"/>
+</p>
 
 # Oikos - Trattoria Moderna
 
-Benvenuto nel repository del sito web di **Oikos - Trattoria Moderna**.  
+Benvenuto nel repository del sito web di **Oikos - Trattoria Moderna**.
 Questo progetto è sviluppato con [Next.js](https://nextjs.org/) e utilizza le più moderne tecnologie frontend per offrire un'esperienza utente elegante, veloce e responsive.
 
 ## Indice
@@ -11,10 +13,8 @@ Questo progetto è sviluppato con [Next.js](https://nextjs.org/) e utilizza le p
 - [Struttura del progetto](#struttura-del-progetto)
 - [Tecnologie utilizzate](#tecnologie-utilizzate)
 - [Installazione e avvio](#installazione-e-avvio)
-- [Autenticazione](#autenticazione)
+- [Variabili d'ambiente](#variabili-d-ambiente)
 - [Componenti e sezioni](#componenti-e-sezioni)
-- [Prenotazione tavolo](#prenotazione-tavolo)
-- [Personalizzazione e utility](#personalizzazione-e-utility)
 - [Deploy](#deploy)
 - [Contatti](#contatti)
 
@@ -96,19 +96,24 @@ middleware.ts          // Middleware per autenticazione Basic
    yarn dev
    ```
 
-4. **Visita:**  
+4. **Visita:**
    [http://localhost:3000](http://localhost:3000)
 
 ---
 
-## Autenticazione
+## Variabili d'ambiente
 
-Il sito può essere protetto da autenticazione Basic tramite il middleware (`middleware.ts`).  
-Le credenziali di default sono:
+Il sito può essere protetto da autenticazione Basic tramite il middleware (`middleware.ts`).
+Per configurare le credenziali, crea un file `.env.local` nella root del progetto e aggiungi le seguenti variabili:
+
+```
+BASIC_AUTH_USER=nome_utente
+BASIC_AUTH_PASS=password
+```
+
+Se non vengono fornite, le credenziali di default sono:
 - **Utente:** `admin`
 - **Password:** `oxystudio`
-
-Puoi sovrascrivere questi valori tramite le variabili d'ambiente `BASIC_AUTH_USER` e `BASIC_AUTH_PASS`.
 
 ---
 
@@ -126,30 +131,17 @@ Puoi sovrascrivere questi valori tramite le variabili d'ambiente `BASIC_AUTH_USE
 
 Componenti riutilizzabili per la navigazione e il footer, con branding e link utili.
 
----
+### Prenotazione tavolo
 
-## Prenotazione tavolo
-
-- **Modale di prenotazione:**  
-  Accessibile dalla homepage tramite pulsante, permette di inserire nome, email, telefono, data, orario e numero di persone.  
+- **Modale di prenotazione:**
+  Accessibile dalla homepage tramite pulsante, permette di inserire nome, email, telefono, data, orario e numero di persone.
   Invio dati tramite chiamata POST a `/api/prenota`.
 
-- **Pagina dedicata (`/prenota`):**  
+- **Pagina dedicata (`/prenota`):**
   Stessa logica della modale, ma in pagina separata.
 
-- **Gestione stato:**  
+- **Gestione stato:**
   Feedback di successo o errore, validazione campi, loading durante l'invio.
-
----
-
-## Personalizzazione e utility
-
-- **Font:**  
-  Geist e Geist Mono da Google Fonts, per un look moderno e leggibile.
-- **Utility CSS:**  
-  Funzione `cn` in `lib/utils.ts` per unire classi Tailwind in modo sicuro.
-- **Immagini:**  
-  Tutte le immagini sono in `/public` e ottimizzate per Next.js.
 
 ---
 
