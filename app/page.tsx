@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { ArrowDown } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
@@ -80,7 +79,7 @@ export default function Desktop() {
           </nav>
           {/* Mobile hamburger placeholder */}
           <div className="md:hidden">
-            {/* Qui puoi mettere un'icona hamburger e un menu mobile */}
+            <Image src="/hamburger.svg" alt="Hamburger" width={24} height={24} />
           </div>
         </header>
 
@@ -121,7 +120,7 @@ export default function Desktop() {
                 LA NOSTRA STORIA
               </h2>
               <p className="font-b612Mono text-black text-xs md:text-base leading-6 max-w-full md:max-w-[420px] whitespace-pre-line">
-                Oykos nasce dalla passione autentica per la cucina italiana e dall'amore per le sue radici.
+                Oykos nasce dalla passione autentica per la cucina italiana e dall&apos;amore per le sue radici.
                 È il risultato di un percorso che intreccia ricette della tradizione italiana con la voglia di innovare e sorprendere.
                 Abbiamo iniziato con un sogno semplice: portare in tavola sapori familiari rivisitati con creatività, creando un ponte tra tradizione e contemporaneità.
                 Ogni nostro piatto è il frutto di ricerca, dedizione e rispetto per la cultura gastronomica italiana.
@@ -155,9 +154,9 @@ export default function Desktop() {
                 LA NOSTRA MISSIONE
               </h2>
               <p className="font-b612Mono text-black text-xs md:text-base leading-6 max-w-full md:max-w-[420px] whitespace-pre-line">
-                La nostra missione è offrire un'esperienza culinaria che vada oltre il semplice mangiare.
+                La nostra missione è offrire un&apos;esperienza culinaria che vada oltre il semplice mangiare.
                 Vogliamo che ogni piatto racconti una storia, evochi un ricordo, trasmetta emozione.
-                In un mondo che corre veloce, Oykos si propone come un luogo dove fermarsi e assaporare il gusto autentico della cucina italiana, con un tocco moderno che ne esalta l'anima.
+                In un mondo che corre veloce, Oykos si propone come un luogo dove fermarsi e assaporare il gusto autentico della cucina italiana, con un tocco moderno che ne esalta l&apos;anima.
               </p>
             </div>
           </div>
