@@ -18,7 +18,7 @@ export default function Desktop() {
   // Recensioni dinamiche
   const reviews = [
     {
-      text: `"Location bellissima, servizio ineccepebile e spt cibo di estrema qualità.\nUna carbonara da fine del mondo.\nComplimenti anche alla ragazza che ci ha servito super cordiale."`,
+      text: `"Location bellissima, servizio ineccepebile e cibo di estrema qualità.\nUna carbonara da fine del mondo.\nComplimenti anche alla ragazza che ci ha servito super cordiale."`,
       author: "Lorenzo A. - Tripadvisor",
     },
     {
@@ -112,54 +112,54 @@ export default function Desktop() {
           </Button>
         </section>
 
-        {/* Our Story Section */}
+        {/* Our Story & Mission Section - nuova griglia 2x2 */}
         <section className="py-12 md:py-24 px-4 md:px-16 w-full">
-          <div className=" mx-auto w-full flex flex-col md:flex-row gap-8  items-center">
-            <div className="flex-1 order-2 md:order-1">
-              <h2 className="font-montserrat text-black text-2xl md:text-[40px] tracking-[0.13em] mb-4 md:mb-8">
+          <div className="mx-auto w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+            {/* Storia: testo a sinistra */}
+            <div className="order-1 md:order-1 flex flex-col justify-center">
+              <h2 className="font-montserrat text-black text-2xl md:text-[32px] tracking-[0.13em] mb-4 md:mb-8 uppercase">
                 LA NOSTRA STORIA
               </h2>
-              <p className="font-b612 text-black text-xs md:text-base leading-6 max-w-full md:max-w-[538px]">
-                Oikos nasce dalla passione autentica per la cucina italiana e dall&apos;amore per le sue radici.<br />
-                È il risultato di un percorso che intreccia ricette della tradizione italiana con la voglia di innovare e sorprendere.<br />
-                Abbiamo iniziato con un sogno semplice: portare in tavola sapori familiari rivisitati con creatività, creando un ponte tra tradizione e contemporaneità.<br />
+              <p className="font-b612Mono text-black text-xs md:text-base leading-6 max-w-full md:max-w-[420px] whitespace-pre-line">
+                Oykos nasce dalla passione autentica per la cucina italiana e dall'amore per le sue radici.
+                È il risultato di un percorso che intreccia ricette della tradizione italiana con la voglia di innovare e sorprendere.
+                Abbiamo iniziato con un sogno semplice: portare in tavola sapori familiari rivisitati con creatività, creando un ponte tra tradizione e contemporaneità.
                 Ogni nostro piatto è il frutto di ricerca, dedizione e rispetto per la cultura gastronomica italiana.
               </p>
             </div>
-            <div className="order-1 md:order-2 w-full md:w-auto">
+            {/* Storia: immagine a destra */}
+            <div className="order-2 md:order-2 flex justify-end">
               <Image
-                className="w-full md:w-[400px] h-[300px] md:h-[580px] object-cover border-none shadow-none"
+                className="w-full md:w-[400px] h-[220px] md:h-full object-cover border-none shadow-none"
                 alt="Chef preparing food"
                 width={400}
-                height={580}
+                height={320}
                 src="/storia.jpg"
                 style={{ border: 'none', boxShadow: 'none' }}
               />
             </div>
-          </div>
-        </section>
-
-        {/* Our Mission Section */}
-        <section className="flex md:flex-row py-12 md:py-24 px-4 md:px-16 gap-8 md:gap-24 items-center">
-          <div className="order-1 md:order-1 w-full md:w-auto">
-            <Image
-              className="w-full md:w-[400px] h-[300px] md:h-[589px] object-cover border-none shadow-none"
-              width={400}
-              height={589}
-              alt="Food dish"
-              src="/mission.jpg"
-              style={{ border: 'none', boxShadow: 'none' }}
-            />
-          </div>
-          <div className="flex-1 order-2 md:order-2">
-            <h2 className="font-montserrat text-black text-2xl md:text-[40px] tracking-[0.13em] mb-4 md:mb-8">
-              LA NOSTRA MISSIONE
-            </h2>
-            <p className="font-b612 text-black text-xs md:text-base leading-6 max-w-full md:max-w-[537px]">
-              La nostra missione è offrire un&apos;esperienza culinaria che vada oltre il semplice mangiare.<br />
-              Vogliamo che ogni piatto racconti una storia, evochi un ricordo, trasmetta emozione.<br />
-              In un mondo che corre veloce, Oikos si propone come un luogo dove fermarsi e assaporare il gusto autentico della cucina italiana, con un tocco moderno che ne esalta l&apos;anima.
-            </p>
+            {/* Mission: immagine a sinistra (sotto) */}
+            <div className="order-4 md:order-3 flex justify-start">
+              <Image
+                className="w-full md:w-[400px] h-[220px] md:h-full object-cover border-none shadow-none"
+                width={400}
+                height={320}
+                alt="Food dish"
+                src="/mission.jpg"
+                style={{ border: 'none', boxShadow: 'none' }}
+              />
+            </div>
+            {/* Mission: testo a destra (sotto) */}
+            <div className="order-3 md:order-4 flex flex-col  ">
+              <h2 className="font-montserrat text-black text-2xl md:text-[32px] tracking-[0.13em] mb-4 md:mb-8 uppercase">
+                LA NOSTRA MISSIONE
+              </h2>
+              <p className="font-b612Mono text-black text-xs md:text-base leading-6 max-w-full md:max-w-[420px] whitespace-pre-line">
+                La nostra missione è offrire un'esperienza culinaria che vada oltre il semplice mangiare.
+                Vogliamo che ogni piatto racconti una storia, evochi un ricordo, trasmetta emozione.
+                In un mondo che corre veloce, Oykos si propone come un luogo dove fermarsi e assaporare il gusto autentico della cucina italiana, con un tocco moderno che ne esalta l'anima.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -205,10 +205,11 @@ export default function Desktop() {
                 <blockquote
                   key={idx}
                   className={`
-                    font-montserrat text-black text-xl md:text-[40px] leading-tight md:leading-[45px] text-center uppercase absolute transition-all duration-700
+                    font-montserrat font-normal text-black text-xl md:text-[40px] leading-tight md:leading-[45px] text-center uppercase absolute transition-all duration-700
                     ${idx === activeReview ? "opacity-100 scale-100 z-10" : "opacity-0 scale-95 z-0"}
+                    w-full md:w-[1030px] left-1/2 -translate-x-1/2
                   `}
-                  style={{ left: 0, right: 0 }}
+                  style={{ top: 0 }}
                 >
                   {review.text.split("\n").map((line, i) => (
                     <React.Fragment key={i}>
