@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ArrowDown } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import Footer from "@/components/ui/footer";
+import Footer from "@/components/ui/Footer";
 
 export default function Desktop() {
   // Dati degli elementi del menu di navigazione
